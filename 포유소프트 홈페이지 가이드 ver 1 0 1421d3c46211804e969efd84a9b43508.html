@@ -1,0 +1,788 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>포유소프트 홈페이지 가이드 ver 1.0</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1421d3c4-6211-804e-969e-fd84a9b43508" class="page sans"><header><h1 class="page-title">포유소프트 홈페이지 가이드 ver 1.0</h1><p class="page-description"></p></header><div class="page-body"><p id="1431d3c4-6211-8087-adfa-fc41fac15e6f" class="">
+</p><h2 id="1431d3c4-6211-8012-9322-d8d07490a4da" class="">1. 기본정보</h2><table id="1431d3c4-6211-8095-a130-ce32c942c06d" class="simple-table"><tbody><tr id="0ef23f14-f1b0-4c11-a317-c4ae40419431"><th id="qPqm" class="simple-table-header-color simple-table-header" style="width:214px">문서 및 버전</th><td id="M?Uh" class="" style="width:551.953125px">HTML, SCSS, Jquery</td></tr><tr id="d79a9e0e-1bee-4256-8d0c-87173993a515"><th id="qPqm" class="simple-table-header-color simple-table-header" style="width:214px">웹 유형</th><td id="M?Uh" class="" style="width:551.953125px">PC, mobile 반응형 (mobile first)</td></tr><tr id="0bdab131-56d4-436d-8332-cf590ef18d00"><th id="qPqm" class="simple-table-header-color simple-table-header" style="width:214px">해상도기준 / 디자인 너비</th><td id="M?Uh" class="" style="width:551.953125px">1920px / 1400px</td></tr><tr id="1431d3c4-6211-80c0-becd-d276504edd8c"><th id="qPqm" class="simple-table-header-color simple-table-header" style="width:214px">디자인가이드</th><td id="M?Uh" class="" style="width:551.953125px"></td></tr></tbody></table><h2 id="1431d3c4-6211-8092-aa43-d1ba5593694a" class="">2. 파일/폴더 규칙</h2><p id="1431d3c4-6211-804d-884b-c12c8e74c894" class="">-작업 파일설명</p><table id="1431d3c4-6211-80f5-bfb9-f8f0bf865277" class="simple-table"><thead class="simple-table-header"><tr id="52da5d4f-bfd8-43d5-b974-1b91ded48019"><th id="J~VD" class="block-color-gray_background simple-table-header" style="width:88px">분류폴더</th><th id="ZfP@" class="block-color-gray_background simple-table-header" style="width:202px">서브폴더</th><th id="eW^m" class="block-color-gray_background simple-table-header" style="width:90px">서브폴더2</th><th id="wmMu" class="block-color-gray_background simple-table-header" style="width:138px">파일명</th><th id="[Kpe" class="block-color-gray_background simple-table-header" style="width:138px">설명</th></tr></thead><tbody><tr id="25032cc7-57b2-4969-b300-89615733e3cb"><td id="J~VD" class="" style="width:88px">asset</td><td id="ZfP@" class="" style="width:202px">css</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">main.css</td><td id="[Kpe" class="" style="width:138px">전체 css</td></tr><tr id="34ebf961-e824-4874-b2ce-7e3fd3d1f176"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">font</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">-</td><td id="[Kpe" class="" style="width:138px">폰트 파일들</td></tr><tr id="1431d3c4-6211-80e1-8064-fbc4d59c46b4"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">image</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px"></td><td id="[Kpe" class="" style="width:138px">이미지 파일들</td></tr><tr id="1431d3c4-6211-807a-b887-c9e8d76295be"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">js</td><td id="eW^m" class="" style="width:90px">lib</td><td id="wmMu" class="" style="width:138px">jquery-2.2.4.min.js /jquery-2.2.4.min.js</td><td id="[Kpe" class="" style="width:138px">jquery</td></tr><tr id="1431d3c4-6211-80c6-911e-e2f7662be766"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">swiper-bundle.min.js / swiper.min.js</td><td id="[Kpe" class="" style="width:138px">swiper</td></tr><tr id="1431d3c4-6211-8086-86f2-d8d226edd4ff"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">common.js</td><td id="[Kpe" class="" style="width:138px">전체 jquery 기능 </td></tr><tr id="1431d3c4-6211-8053-811b-c2c5eb92d49c"><td id="J~VD" class="" style="width:88px">scss</td><td id="ZfP@" class="" style="width:202px">components</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_buttons.scss</td><td id="[Kpe" class="" style="width:138px">버튼 ui style</td></tr><tr id="1431d3c4-6211-8046-b7e1-c350ec5b4179"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_cards.scss</td><td id="[Kpe" class="" style="width:138px">card ui style</td></tr><tr id="1431d3c4-6211-80ab-b434-e27dea8fbfc7"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_input.scss</td><td id="[Kpe" class="" style="width:138px">input ui style</td></tr><tr id="1431d3c4-6211-80f9-a60a-c564666dc60a"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">config : 공통스타일 정의</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_common.scss</td><td id="[Kpe" class="" style="width:138px">공통 style scss</td></tr><tr id="1431d3c4-6211-805a-8a27-c18da7626f32"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_font-style.scss</td><td id="[Kpe" class="" style="width:138px">font style </td></tr><tr id="1431d3c4-6211-80fc-8b8c-ea8c0e771003"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_reset.scss</td><td id="[Kpe" class="" style="width:138px">reset style</td></tr><tr id="1431d3c4-6211-809a-a478-eca0895c1238"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">layout : 레이아웃 스타일정의</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_header.scss</td><td id="[Kpe" class="" style="width:138px">header style scss</td></tr><tr id="1431d3c4-6211-80e5-92c9-c0d3205e9100"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_contents.scss</td><td id="[Kpe" class="" style="width:138px">컨텐츠 영역 모든 스타일</td></tr><tr id="1431d3c4-6211-80e4-94f5-f959c7f74849"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_footer.scss</td><td id="[Kpe" class="" style="width:138px">footer style scss</td></tr><tr id="1431d3c4-6211-8095-9c2c-cf6bb48a2ced"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px">utils : 재사용을 위한 정의</td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_mixin.scss</td><td id="[Kpe" class="" style="width:138px">mixin</td></tr><tr id="1431d3c4-6211-803c-8310-cbad2bbdc20e"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">_vars.scss</td><td id="[Kpe" class="" style="width:138px">변수</td></tr><tr id="1431d3c4-6211-808a-8d0b-e607b90cb451"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">main.scss</td><td id="[Kpe" class="" style="width:138px">모든 파일 import한 전체 스타일링 파일</td></tr><tr id="1431d3c4-6211-806c-b845-f7e8a540b2b4"><td id="J~VD" class="" style="width:88px"></td><td id="ZfP@" class="" style="width:202px"></td><td id="eW^m" class="" style="width:90px"></td><td id="wmMu" class="" style="width:138px">index.html</td><td id="[Kpe" class="" style="width:138px"></td></tr></tbody></table><h3 id="1431d3c4-6211-8088-8fb7-f7ab4f5f390e" class="">- 공통 파일/ 폴더 규칙</h3><ul id="1431d3c4-6211-8096-956b-de8fca6f93e2" class="bulleted-list"><li style="list-style-type:disc">직관적으로 내용을 알 수 있도록 네이밍 작성</li></ul><ul id="1431d3c4-6211-8047-a118-f113f1a944b7" class="bulleted-list"><li style="list-style-type:disc">첫 문자는 영어 소문자로 작성하며 두 가지 이상의 단어로 조합하는 경우 단어 사이를 ‘-’로 연결한다.</li></ul><p id="1431d3c4-6211-80c0-8c2c-c59857aaccfe" class="">
+</p><h3 id="1431d3c4-6211-8050-94cd-e55150f93f5a" class="">- css 파일/ 폴더 규칙</h3><ul id="1431d3c4-6211-80c1-9f9d-d28af54b2be1" class="bulleted-list"><li style="list-style-type:disc">live scss compiler로 컴파일 asset/css 안에 작성되도록 설정함</li></ul><ul id="1431d3c4-6211-8083-a2b6-ec5737c9872e" class="bulleted-list"><li style="list-style-type:disc">live scss compiler setting.json</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-80eb-9f0e-cea9b06ee908" class="code"><code class="language-JSON">  &quot;liveSassCompile.settings.formats&quot;: [
+    {
+      &quot;format&quot;: &quot;expanded&quot;,
+      &quot;extensionName&quot;: &quot;.css&quot;,
+      &quot;savePath&quot;: &quot;/asset/css&quot;
+    }
+  ],</code></pre><p id="1431d3c4-6211-80f6-ab6b-f14dc275a3f4" class="">
+</p><h3 id="1431d3c4-6211-8060-85ee-c26a26d5f81b" class="">-  scss 파일/폴더규칙</h3><ul id="1431d3c4-6211-80a2-aefb-d3d39671c178" class="bulleted-list"><li style="list-style-type:disc">컴파일이 필요 없는 파일은 _를 맨 앞에 포함하여 작성. </li></ul><ul id="1431d3c4-6211-8082-bba5-d76dd1055da9" class="bulleted-list"><li style="list-style-type:disc">가능하면 컴포넌트 형식으로 분할하여 작성하고 하나의 스타일시트에 임포트 하는 방식으로 구성한다.</li></ul><ul id="1431d3c4-6211-80bd-b4a6-d5f161ec9c63" class="toggle"><li><details open=""><summary><strong>scss 코드 작성 규칙</strong></summary><ol type="1" id="1431d3c4-6211-8068-b76e-f4a8b26393e4" class="numbered-list" start="1"><li>속성</li></ol><ul id="1431d3c4-6211-80b4-b16f-ea060a08e871" class="bulleted-list"><li style="list-style-type:disc">모든 속성은 영문 소문자로 작성한다.</li></ul><ul id="1431d3c4-6211-8095-af2d-d6e1b48bef30" class="bulleted-list"><li style="list-style-type:disc">약식으로 가능하면 약식으로 작성한다.</li></ul><ul id="1431d3c4-6211-801d-a7d0-ff2fbed70f29" class="bulleted-list"><li style="list-style-type:disc">컬러값은 최대한 단축값으로 작성한다. (ex. #fffff → #fff)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-800f-b655-d6e1ba6b1b2e" class="code"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">.class-name {
+  background: #fff url(&quot;../images/image.jpg&quot;) no-repeat 50% / cover;
+}</code></pre><ul id="1431d3c4-6211-80e9-933c-c8e530eac2e5" class="bulleted-list"><li style="list-style-type:disc">기본요소에 box-sizing 속성값 작성하지 않는다.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-807b-b764-ce72ef89e3f4" class="code"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">/* X */
+* {
+  box-sizing: border-box;
+}
+
+/* O */
+.class-name {
+  box-sizing: border-box;
+}</code></pre></li></ul><ol type="1" id="1431d3c4-6211-8036-8ede-eeb622ce0a1b" class="numbered-list" start="2"><li>선택자 및 우선 순위</li></ol><ul id="1431d3c4-6211-8055-be26-cd482d40b350" class="bulleted-list"><li style="list-style-type:disc">공통선택자(*)는 웹페이지 성능저하를 가져오므로 사용하지 않는다.</li></ul><ul id="1431d3c4-6211-8044-89f6-f7ee4f1aef38" class="bulleted-list"><li style="list-style-type:disc">태그를 선택자로 스타일을 작성하는 것은 지양한다.</li></ul><ul id="1431d3c4-6211-8056-8887-c70bb02301e9" class="bulleted-list"><li style="list-style-type:disc">!important 는 불가피한 상황에만 사용한다.</li></ul><ul id="1431d3c4-6211-80c1-a3d0-e107a0c54437" class="bulleted-list"><li style="list-style-type:disc">인라인 스타일의 우선순위가 높으므로 인라인 스타일의 사용은 최소한으로 한다.</li></ul><p id="1431d3c4-6211-804a-9750-d4f69a945203" class="">
+</p><ol type="1" id="1431d3c4-6211-8012-86d7-c84d3f8a89d2" class="numbered-list" start="3"><li>세미 콜론 : 속성마다 세미콜론을 사용한다.</li></ol><ol type="1" id="1431d3c4-6211-80d1-9b8b-d1c2159024c4" class="numbered-list" start="4"><li>들여쓰기 : 1탭 들여쓰기를 하며 1탭의 크기는 공백 2칸으로 설정한다.</li></ol><ol type="1" id="1431d3c4-6211-8075-b2cc-c6d71f59fbb9" class="numbered-list" start="5"><li>공백의 사용 : 선택자 간, 중괄호 간 한칸의 공백을 사용. 속성 선언 시 ‘:’뒤에 한 칸의 공백을 사용한다.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-8042-85c5-eec099b5240b" class="code"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">.class-name {
+    color: red;
+}</code></pre></li></ol><ol type="1" id="1431d3c4-6211-806b-a43c-cc6006a681ef" class="numbered-list" start="6"><li>줄바꿈 : 중괄호 사이와 속성 작성시 줄바꿈 처리하며 중첩시에 선택자 전에 줄바꿈 처리한다.</li></ol><p id="1431d3c4-6211-809e-8f02-f6903463ebd8" class="">      (단, after,before 와 같이 가상클래스는 줄바꿈 처리하지 않는다.)<div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-80c8-833f-f3d7e18ab74a" class="code"><code class="language-Scss" style="white-space:pre-wrap;word-break:break-all">ul.card-content {
+  padding: 30px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  min-height: 323px;
+  box-sizing: border-box;
+
+  li {
+    line-height: 28.8px;
+    margin-bottom: 10px;
+    &amp;:before {
+      content: &quot;&quot;;
+      display: inline-block;
+      margin: 0 12px;
+      width: 4px;
+      height: 4px;
+      background-color: $basic;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+  }
+}</code></pre></div></p><p id="1431d3c4-6211-8068-84a6-c25cdedd6304" class="">
+</p><ol type="1" id="1431d3c4-6211-80e5-ae9b-e1d2d836fd6e" class="numbered-list" start="7"><li>주석</li></ol><ul id="1431d3c4-6211-8020-9ebd-cdeb26d8bb72" class="bulleted-list"><li style="list-style-type:disc">주석 작성 시 종료 주석은 작성하지 않는다.</li></ul><ul id="1431d3c4-6211-8021-b361-f04e319e17dd" class="bulleted-list"><li style="list-style-type:disc">scss 중첩 시 알아볼 수 있도록 주석으로 클래스를 작성한다.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-80ee-95be-d46ab899fe2e" class="code"><code class="language-CSS" style="white-space:pre-wrap;word-break:break-all">.header {
+  &amp;-menu {
+    ...;
+  } // .header-menu
+}</code></pre><p id="1431d3c4-6211-80b8-a61b-fd4a26c3ff1d" class="">
+</p><p id="1431d3c4-6211-8099-9fbc-d54a6459d08f" class="">8.반복</p><ul id="1431d3c4-6211-80f9-ae44-cbd7f1d0265c" class="bulleted-list"><li style="list-style-type:disc">반복적으로 사용되는 스타일의 경우 mixindlsk scss함수로 활용한다.</li></ul><ul id="1431d3c4-6211-80d9-b56a-c4f2e0e29cc4" class="bulleted-list"><li style="list-style-type:disc">반복적으로 사용되는 값은 변수로 선언하여 활영한다.</li></ul><ul id="1431d3c4-6211-8044-8b30-ee3dd49738b1" class="bulleted-list"><li style="list-style-type:disc">mixin 이나 변수, 함수명 등을 작성할 때는 카멜형식으로 표기한다.</li></ul><ul id="1431d3c4-6211-8017-8e16-e464cab0d7c8" class="bulleted-list"><li style="list-style-type:disc">스타일이 연속으로 반복되는 경우 for문 사용하여 추가 및 삭제에도 수정가능하도록 한다.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1431d3c4-6211-80c6-8e46-d42675008daf" class="code"><code class="language-Scss">@for $i from 1 to 5 {
+  .tab-icon-0#{$i} {
+    display: inline-block;
+    width: 100rem;
+    height: 100rem;
+    background-image: url(&quot;/asset/image/pc/tab_icon_0#{$i}.png&quot;);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
+      @include cardStyle(60px, 60px);
+      background-image: url(&quot;/asset/image/pc/tab_icon_0#{i}.png&quot;);
+    }
+  }
+}</code></pre><p id="14a1d3c4-6211-80b9-b4cd-c450cb9f3607" class="">
+</p><p id="1431d3c4-6211-80ff-a86f-cc190a588c0d" class="">9.미디어쿼리 <div class="indented"><p id="14a1d3c4-6211-80d8-817b-c5ff981b7439" class="">: 미디어 쿼리가 필요한 요소에 믹스인을 불러와서 각각 넣어줌 </p></div></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1441d3c4-6211-80ef-b739-fc21f1f0c84b" class="code"><code class="language-Scss" style="white-space:pre-wrap;word-break:break-all">.tab-name {
+            display: inline-block;
+            height: 60px;
+            margin-top: 4px;
+            padding-bottom: 12px;
+            text-align: center;
+            @include fontStyle(17px, 25.2px, 400);
+            vertical-align: bottom;
+
+            @include tablet {
+              margin-bottom: 8px;
+              @include fontStyle(17px, 25.2px, 400);
+              height: 40px;
+            }
+
+            @include laptop {
+              margin-top: 24px;
+              margin-bottom: 12px;
+              @include fontStyle(24px, 28.8px, 400);
+              text-align: center;
+              vertical-align: bottom;
+            }
+          }</code></pre></details></li></ul><p id="14a1d3c4-6211-80cc-8a97-d4f06a519603" class="">
+</p><h3 id="1441d3c4-6211-80b3-86be-c2af9a37183f" class="">- j<strong>s  파일 규칙</strong></h3><ul id="14a1d3c4-6211-803a-b54e-f49537eec6ac" class="bulleted-list"><li style="list-style-type:disc">jquery로 작성</li></ul><ul id="14a1d3c4-6211-80a7-8395-d82c19f018cc" class="bulleted-list"><li style="list-style-type:disc">함수 선언 후 <strong>$(function() { } </strong>안에 호출 하는 방식으로 작성함. </li></ul><ul id="14a1d3c4-6211-8090-a292-c28adafcb1fe" class="bulleted-list"><li style="list-style-type:disc">$(function() { }   안에 바로 함수명 없이 사용하지 않는다.</li></ul><ul id="14a1d3c4-6211-8069-92bb-e1df211c355f" class="bulleted-list"><li style="list-style-type:disc">함수선언 시, 어떤 기능을 위한 코드인지 간략하게 주석으로 메모함.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="14a1d3c4-6211-8071-a0dd-ff4bc0148865" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//다국어 드롭다운
+function langdrop() {
+  const dropBtn = $(&#x27;.language-selector button&#x27;);
+  const dropdown = $(&#x27;.language-selector&#x27;);
+
+  dropBtn.on(&#x27;click&#x27;, function () {
+    dropdown.toggleClass(&#x27;active&#x27;);
+  });
+
+  $(document).on(&#x27;click&#x27;, function (event) {
+    if (!$(event.target).closest(&#x27;.language-selector&#x27;).length) {
+      dropdown.removeClass(&#x27;active&#x27;);
+    };
+  });
+};
+</code></pre><p id="14a1d3c4-6211-80b1-9c7f-d5c687425161" class="">
+</p><h3 id="1441d3c4-6211-8026-b027-f01890fa6abc" class=""><strong>- image파일 규칙</strong></h3><ul id="1441d3c4-6211-80dc-9198-f5979875b783" class="bulleted-list"><li style="list-style-type:disc">pc/mobile 용 이미지는 각각 폴더에 저장한다.</li></ul><ul id="1441d3c4-6211-8098-904b-cdb3dab309ed" class="bulleted-list"><li style="list-style-type:disc">모든 디바이스에서 공통으로 사용하는 경우 pc 폴더에 저장한다.</li></ul><ul id="1441d3c4-6211-80c3-9b87-d3ea3b5610c1" class="bulleted-list"><li style="list-style-type:disc">이미지는 png 파일로 3배수로 저장한다.</li></ul><ul id="1441d3c4-6211-8093-8145-db1ab7c7d221" class="bulleted-list"><li style="list-style-type:disc">아이콘 이미지는 svg로 저장한다.</li></ul><h2 id="1431d3c4-6211-80ee-81b8-c3184390d935" class="">3. 네이밍 규칙</h2><ol type="1" id="1431d3c4-6211-80e4-8728-d4d7e9bd48cf" class="numbered-list" start="1"><li>I<strong>D 선택자 : </strong>퍼블리싱 작업시 앵커나 label 등의 연결을 위한 용도로만 사용하며 카멜 표기법으로 작성한다.</li></ol><ol type="1" id="1431d3c4-6211-8098-aa44-d9c809b552e1" class="numbered-list" start="2"><li><strong>태그 선택자 </strong>: 시멘틱태그나 레이아웃을 표기하는데 사용한다.<table id="1431d3c4-6211-80cc-8854-f59eb09bb33a" class="simple-table"><thead class="simple-table-header"><tr id="604644fd-f311-4d8d-bbeb-ee6dc39a3899"><th id=":F^a" class="simple-table-header-color simple-table-header" style="width:311px">구분</th><th id="iOKd" class="simple-table-header-color simple-table-header" style="width:349px">태그</th></tr></thead><tbody><tr id="309e36ae-cb5a-4442-92a7-4767a66039b2"><td id=":F^a" class="" style="width:311px">헤더</td><td id="iOKd" class="" style="width:349px">header</td></tr><tr id="1ebcea74-f4fb-4211-a87d-c25811f07443"><td id=":F^a" class="" style="width:311px">컨텐츠영역</td><td id="iOKd" class="" style="width:349px">main</td></tr><tr id="1431d3c4-6211-80ae-90e6-ec5fcd915c59"><td id=":F^a" class="" style="width:311px">푸터</td><td id="iOKd" class="" style="width:349px">footer</td></tr></tbody></table></li></ol><ol type="1" id="1431d3c4-6211-8095-8744-f06dc260e915" class="numbered-list" start="3"><li><strong>class 선택자 </strong></li></ol><ul id="1431d3c4-6211-80b0-bbf3-eb68c31fba7a" class="bulleted-list"><li style="list-style-type:disc">체인 선택자는 3개까지만 작성한다.</li></ul><ul id="1431d3c4-6211-80a7-bfc8-d7c420af468d" class="bulleted-list"><li style="list-style-type:disc">케밥표기법으로 작성한다.</li></ul><ul id="1431d3c4-6211-805a-8d52-d1d3a6a4ec3a" class="bulleted-list"><li style="list-style-type:disc">영역<table id="1431d3c4-6211-806f-ba5d-e99055237889" class="simple-table"><tbody><tr id="c04e654b-d3c5-4f1b-b15c-6af280146d21"><th id="^Qr|" class="simple-table-header-color simple-table-header">컨텐츠 전체 영역 단위</th><td id="ccnJ" class="" style="width:323px">sector-</td></tr><tr id="aad773df-d569-4419-bc3a-66166e793fb7"><th id="^Qr|" class="simple-table-header-color simple-table-header">안쪽 영역</th><td id="ccnJ" class="" style="width:323px">inner-</td></tr><tr id="1451d3c4-6211-80af-ae73-e80719882091"><th id="^Qr|" class="simple-table-header-color simple-table-header">탭 영역</th><td id="ccnJ" class="" style="width:323px">tab-</td></tr></tbody></table></li></ul><ul id="1431d3c4-6211-8024-981e-e28872f04403" class="bulleted-list"><li style="list-style-type:disc">구조</li></ul><table id="1431d3c4-6211-800f-89e8-d22deb5e6c19" class="simple-table"><tbody><tr id="1431d3c4-6211-80c9-8048-d0847a21bef2"><td id="^tS;" class="">구분</td><td id=":vLz" class="" style="width:160px">예약어</td><td id="YUWi" class="" style="width:403px">설명</td></tr><tr id="1431d3c4-6211-8093-9e47-e83c93f7d7aa"><td id="^tS;" class="">제목 영역</td><td id=":vLz" class="" style="width:160px">-title</td><td id="YUWi" class="" style="width:403px">전체 영역의 제목</td></tr><tr id="1431d3c4-6211-80df-8778-df07d3377291"><td id="^tS;" class="">본문 텍스트 영역</td><td id=":vLz" class="" style="width:160px">-text / -content</td><td id="YUWi" class="" style="width:403px">전체 영역의 본문 텍스트</td></tr><tr id="1431d3c4-6211-8046-ae15-e98c34853ff7"><td id="^tS;" class="">본문 텍스트 설명 영역</td><td id=":vLz" class="" style="width:160px">-desc</td><td id="YUWi" class="" style="width:403px">전체 영역의 본문 텍스트 설명 영역</td></tr><tr id="1431d3c4-6211-8037-96fe-d31547de3a74"><td id="^tS;" class="">네비게이션</td><td id=":vLz" class="" style="width:160px">nav-</td><td id="YUWi" class="" style="width:403px">네비게이션 관련 요소들</td></tr><tr id="1431d3c4-6211-8001-b76d-e1c17884447b"><td id="^tS;" class="">슬라이드 메뉴</td><td id=":vLz" class="" style="width:160px">side-menu</td><td id="YUWi" class="" style="width:403px">탐색 역할이 없는 선택목록 메뉴</td></tr><tr id="1431d3c4-6211-8088-adde-cfc0e5c7ee86"><td id="^tS;" class="">리스트</td><td id=":vLz" class="" style="width:160px">-list</td><td id="YUWi" class="" style="width:403px"><code>ul</code>, <code>ol</code>에 해당하는 반복되는 목록그룹</td></tr><tr id="1431d3c4-6211-8083-85ff-c4f09250b1d2"><td id="^tS;" class="">항목</td><td id=":vLz" class="" style="width:160px">-item</td><td id="YUWi" class="" style="width:403px">리스트 항목</td></tr><tr id="1431d3c4-6211-8094-bad1-ccd8927ffe26"><td id="^tS;" class="">박스</td><td id=":vLz" class="" style="width:160px">-box</td><td id="YUWi" class="" style="width:403px">본문 안에 동일한 내용을 묶는 박스</td></tr></tbody></table><figure id="1421d3c4-6211-803d-850d-cfccc919b4bf" class="link-to-page"><a href="%E1%84%91%E1%85%A9%E1%84%8B%E1%85%B2%E1%84%89%E1%85%A9%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%20%E1%84%92%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20ver%201%200%201421d3c46211804e969efd84a9b43508/%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%87%E1%85%B3%E1%84%85%E1%85%A5%E1%84%85%E1%85%B5%201421d3c46211803d850dcfccc919b4bf.html">라이브러리</a></figure><p id="1431d3c4-6211-80e4-a83a-e38c6a4307db" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
